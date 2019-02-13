@@ -33,6 +33,17 @@ class Navbar extends Component<NavbarProps> {
       </Fragment>
     );
 
+    const authRoutes = (
+      <Fragment>
+        <NavLink className="nav-item nav-link" to="/dashboard">
+          Dashboard
+        </NavLink>
+        <NavLink className="nav-item nav-link" to="/add">
+          Add Image
+        </NavLink>
+      </Fragment>
+    );
+
     const guestLinks = (
       <Fragment>
         <NavLink className="nav-item nav-link" to="/login">
@@ -62,13 +73,7 @@ class Navbar extends Component<NavbarProps> {
           </button>
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <div className="navbar-nav">
-              {isAuthenticated ? (
-                <NavLink className="nav-item nav-link" to="/dashboard">
-                  Dashboard
-                </NavLink>
-              ) : (
-                ''
-              )}
+              {isAuthenticated ? authRoutes : ''}
             </div>
             <div className="ml-auto d-lg-flex d-md-block">
               <div className="navbar-nav">

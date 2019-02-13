@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { auth, githubAuthProvider } from '../../firebase';
+import { auth, githubAuthProvider, googleAuthProvider } from '../../firebase';
 import { connect } from 'react-redux';
-import { login } from '../../actions/auth';
 import { Redirect } from 'react-router';
 
 interface LoginProps {
@@ -19,6 +18,12 @@ export class Login extends Component<LoginProps> {
           <div className="card-body">
             <h3 className="card-title lead">Login</h3>
             <button
+              className="btn btn-block btn-danger"
+              onClick={() => auth.signInWithPopup(googleAuthProvider)}
+            >
+              Login With Google
+            </button>
+            <button
               className="btn btn-block btn-dark"
               onClick={() => auth.signInWithPopup(githubAuthProvider)}
             >
@@ -35,7 +40,4 @@ const mapStateToProps = (state: any) => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect<LoginProps>(
-  mapStateToProps,
-  { login }
-)(Login);
+export default connect<LoginProps>(mapStateToProps)(Login);

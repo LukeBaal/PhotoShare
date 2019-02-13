@@ -9,6 +9,7 @@ import Navbar from './components/layout/Navbar';
 import { auth } from './firebase';
 import store from './store';
 import Landing from './components/Landing';
+import AddImage from './components/AddImage';
 
 class App extends Component<any, any> {
   async componentWillMount() {
@@ -27,6 +28,7 @@ class App extends Component<any, any> {
               <Switch>
                 <Route exact path="/" component={Landing} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/add" component={AddImage} />
                 <Route exact path="/login" component={Login} />
               </Switch>
             </div>
