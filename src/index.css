@@ -16,3 +16,7 @@ img {
   margin-bottom: 1em;
   width: calc(50% - 1rem);
 }
+
+.ais-RefinementList-checkbox {
+  margin-right: 0.2em;
+}

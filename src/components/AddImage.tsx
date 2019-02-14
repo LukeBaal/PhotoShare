@@ -5,9 +5,10 @@ import { db } from '../firebase';
 import { connect } from 'react-redux';
 import { AppState } from '../reducers';
 import { AuthState } from '../reducers/auth';
-import { Photo } from './Photo';
+import { History } from 'history';
 
 interface AddImageProps {
+  history: History;
   auth: AuthState;
 }
 
@@ -74,6 +75,7 @@ class AddImage extends Component<AddImageProps, AddImageState> {
         };
 
         await db.collection('photos').add(newPhoto);
+        this.props.history.push('/dashboard');
       }
     );
   };
@@ -123,6 +125,12 @@ class AddImage extends Component<AddImageProps, AddImageState> {
               aria-valuemin={0}
               aria-valuemax={100}
             />
+          </div>
+          <div className="media">
+            <img src={image} alt="" />
+            <div className="media-body">
+              <p>{image.name}</p>
+            </div>
           </div>
           <button
             className="btn btn-success btn-block"

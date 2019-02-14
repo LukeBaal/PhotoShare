@@ -1,3 +1,4 @@
+import { orderBy } from 'lodash';
 import React, { Component } from 'react';
 
 import {
@@ -46,13 +47,20 @@ export class Search extends Component<{}, SearchState> {
             <div className="col-md-2">
               <ClearRefinements />
               <h3>Labels</h3>
-              <RefinementList attribute="labels.description" />
+              <RefinementList
+                attribute="labels.description"
+                operator="and"
+                showMore={true}
+                transformItems={(items: any[]) => {
+                  return orderBy(items, ['count', 'label'], ['desc', 'asc']);
+                }}
+              />
               <Configure hitsPerPage={8} />
             </div>
             <div className="col-md-10">
               <SearchBox onChange={this.searchChanged} />
               <Hits hitComponent={ImageHit} />
-              <Pagination />
+              <Pagination className="mb-5" />
             </div>
           </div>
         </InstantSearch>

@@ -1,0 +1,390 @@
+[debug] [2019-02-14T23:06:54.407Z] ----------------------------------------------------------------------
+[debug] [2019-02-14T23:06:54.408Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2019-02-14T23:06:54.408Z] CLI Version:   6.3.1
+[debug] [2019-02-14T23:06:54.409Z] Platform:      linux
+[debug] [2019-02-14T23:06:54.409Z] Node Version:  v10.15.1
+[debug] [2019-02-14T23:06:54.409Z] Time:          Thu Feb 14 2019 18:06:54 GMT-0500 (Eastern Standard Time)
+[debug] [2019-02-14T23:06:54.409Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-14T23:06:54.415Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-14T23:06:54.415Z] > authorizing via signed-in user
+[debug] [2019-02-14T23:06:54.415Z] [iam] checking project photo-share-a271c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-02-14T23:06:54.416Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/photo-share-a271c:testIamPermissions  
+
+[debug] [2019-02-14T23:06:54.890Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:06:54.891Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/photo-share-a271c  
+ 
+[debug] [2019-02-14T23:06:55.302Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'photo-share-a271c'...
+[info] 
+[info] i  deploying storage, firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2019-02-14T23:07:05.396Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/photo-share-a271c  
+ 
+[debug] [2019-02-14T23:07:06.149Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2019-02-14T23:07:06.181Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/photo-share-a271c:test  
+
+[debug] [2019-02-14T23:07:06.372Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-02-14T23:07:06.449Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/photo-share-a271c:test  
+
+[debug] [2019-02-14T23:07:06.599Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-02-14T23:07:06.602Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "@google-cloud/vision": "^0.24.0",
+    "@sendgrid/mail": "^6.3.1",
+    "algoliasearch": "^3.32.0",
+    "firebase-admin": "~7.0.0",
+    "firebase-functions": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-plugin-promise": "^4.0.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-02-14T23:07:06.604Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/photo-share-a271c?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-14T23:07:06.605Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/photo-share-a271c?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-14T23:07:07.379Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:07:07.395Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2019-02-14T23:07:07.397Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/photo-share-a271c  
+ 
+[debug] [2019-02-14T23:07:07.889Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:07:07.890Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/553594430987:getServerAppConfig  
+ 
+[debug] [2019-02-14T23:07:08.025Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:07:08.028Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/photo-share-a271c/versions  
+
+[debug] [2019-02-14T23:07:18.538Z] <<< HTTP RESPONSE 503
+[debug] [2019-02-14T23:07:18.539Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 503, The service is currently unavailable.
+[debug] [2019-02-14T23:07:18.543Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 503,
+      "message": "The service is currently unavailable.",
+      "status": "UNAVAILABLE"
+    }
+  },
+  "response": {
+    "statusCode": 503,
+    "body": {
+      "error": {
+        "code": 503,
+        "message": "The service is currently unavailable.",
+        "status": "UNAVAILABLE"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Thu, 14 Feb 2019 23:07:18 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "1; mode=block",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"44,43,39\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/photo-share-a271c/versions",
+        "path": "/v1beta1/sites/photo-share-a271c/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/photo-share-a271c/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2019-02-14T23:09:36.274Z] ----------------------------------------------------------------------
+[debug] [2019-02-14T23:09:36.276Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2019-02-14T23:09:36.276Z] CLI Version:   6.3.1
+[debug] [2019-02-14T23:09:36.276Z] Platform:      linux
+[debug] [2019-02-14T23:09:36.276Z] Node Version:  v10.15.1
+[debug] [2019-02-14T23:09:36.276Z] Time:          Thu Feb 14 2019 18:09:36 GMT-0500 (Eastern Standard Time)
+[debug] [2019-02-14T23:09:36.276Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-14T23:09:36.282Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-14T23:09:36.282Z] > authorizing via signed-in user
+[debug] [2019-02-14T23:09:36.282Z] [iam] checking project photo-share-a271c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-02-14T23:09:36.284Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/photo-share-a271c:testIamPermissions  
+
+[debug] [2019-02-14T23:09:36.994Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:09:36.998Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/photo-share-a271c  
+ 
+[debug] [2019-02-14T23:09:37.173Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'photo-share-a271c'...
+[info] 
+[info] i  deploying storage, firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2019-02-14T23:09:39.878Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/photo-share-a271c  
+ 
+[debug] [2019-02-14T23:09:40.240Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2019-02-14T23:09:40.244Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/photo-share-a271c:test  
+
+[debug] [2019-02-14T23:09:40.385Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-02-14T23:09:40.389Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/photo-share-a271c:test  
+
+[debug] [2019-02-14T23:09:40.515Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-02-14T23:09:40.518Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "@google-cloud/vision": "^0.24.0",
+    "@sendgrid/mail": "^6.3.1",
+    "algoliasearch": "^3.32.0",
+    "firebase-admin": "~7.0.0",
+    "firebase-functions": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-plugin-promise": "^4.0.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-02-14T23:09:40.520Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/photo-share-a271c?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-14T23:09:40.521Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/photo-share-a271c?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-14T23:09:41.271Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:09:41.312Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2019-02-14T23:09:41.314Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/photo-share-a271c  
+ 
+[debug] [2019-02-14T23:09:41.676Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:09:41.677Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/553594430987:getServerAppConfig  
+ 
+[debug] [2019-02-14T23:09:41.839Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:09:41.842Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/photo-share-a271c/versions  
+
+[debug] [2019-02-14T23:09:52.141Z] <<< HTTP RESPONSE 503
+[debug] [2019-02-14T23:09:52.142Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 503, The service is currently unavailable.
+[debug] [2019-02-14T23:09:52.149Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 503,
+      "message": "The service is currently unavailable.",
+      "status": "UNAVAILABLE"
+    }
+  },
+  "response": {
+    "statusCode": 503,
+    "body": {
+      "error": {
+        "code": 503,
+        "message": "The service is currently unavailable.",
+        "status": "UNAVAILABLE"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Thu, 14 Feb 2019 23:09:52 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "1; mode=block",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"44,43,39\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/photo-share-a271c/versions",
+        "path": "/v1beta1/sites/photo-share-a271c/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/photo-share-a271c/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2019-02-14T23:11:41.167Z] ----------------------------------------------------------------------
+[debug] [2019-02-14T23:11:41.169Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2019-02-14T23:11:41.169Z] CLI Version:   6.3.1
+[debug] [2019-02-14T23:11:41.169Z] Platform:      linux
+[debug] [2019-02-14T23:11:41.169Z] Node Version:  v10.15.1
+[debug] [2019-02-14T23:11:41.169Z] Time:          Thu Feb 14 2019 18:11:41 GMT-0500 (Eastern Standard Time)
+[debug] [2019-02-14T23:11:41.169Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-14T23:11:41.176Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-14T23:11:41.176Z] > authorizing via signed-in user
+[debug] [2019-02-14T23:11:41.176Z] [iam] checking project photo-share-a271c for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-02-14T23:11:41.177Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/photo-share-a271c:testIamPermissions  
+
+[debug] [2019-02-14T23:11:42.024Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:11:42.026Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/photo-share-a271c  
+ 
+[debug] [2019-02-14T23:11:42.208Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'photo-share-a271c'...
+[info] 
+[info] i  deploying storage, firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2019-02-14T23:11:44.679Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/photo-share-a271c  
+ 
+[debug] [2019-02-14T23:11:45.193Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2019-02-14T23:11:45.197Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/photo-share-a271c:test  
+
+[debug] [2019-02-14T23:11:45.343Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-02-14T23:11:45.348Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/photo-share-a271c:test  
+
+[debug] [2019-02-14T23:11:45.467Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-02-14T23:11:45.471Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase serve --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "dependencies": {
+    "@google-cloud/vision": "^0.24.0",
+    "@sendgrid/mail": "^6.3.1",
+    "algoliasearch": "^3.32.0",
+    "firebase-admin": "~7.0.0",
+    "firebase-functions": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-plugin-promise": "^4.0.1"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-02-14T23:11:45.472Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/photo-share-a271c?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-14T23:11:45.473Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/photo-share-a271c?view=CONSUMER_VIEW  
+ 
+[debug] [2019-02-14T23:11:46.527Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:11:46.544Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2019-02-14T23:11:46.545Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/photo-share-a271c  
+ 
+[debug] [2019-02-14T23:11:47.034Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:11:47.036Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/553594430987:getServerAppConfig  
+ 
+[debug] [2019-02-14T23:11:47.201Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-14T23:11:47.204Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/photo-share-a271c/versions  
+
+[debug] [2019-02-14T23:11:57.583Z] <<< HTTP RESPONSE 503
+[debug] [2019-02-14T23:11:57.583Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 503, The service is currently unavailable.
+[debug] [2019-02-14T23:11:57.587Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 503,
+      "message": "The service is currently unavailable.",
+      "status": "UNAVAILABLE"
+    }
+  },
+  "response": {
+    "statusCode": 503,
+    "body": {
+      "error": {
+        "code": 503,
+        "message": "The service is currently unavailable.",
+        "status": "UNAVAILABLE"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Thu, 14 Feb 2019 23:11:57 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "1; mode=block",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"44,43,39\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/photo-share-a271c/versions",
+        "path": "/v1beta1/sites/photo-share-a271c/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/photo-share-a271c/versions"
+      },
+      "method": "POST"
+    }
+  }
+}

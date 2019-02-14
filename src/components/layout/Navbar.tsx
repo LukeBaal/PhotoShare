@@ -26,6 +26,7 @@ class Navbar extends Component<NavbarProps> {
         )}
         <a
           className="nav-item nav-link pointer"
+          style={{ cursor: 'pointer' }}
           onClick={async () => await this.props.logout()}
         >
           Logout
@@ -45,14 +46,9 @@ class Navbar extends Component<NavbarProps> {
     );
 
     const guestLinks = (
-      <Fragment>
-        <NavLink className="nav-item nav-link" to="/login">
-          Login
-        </NavLink>
-        <NavLink className="nav-item nav-link" to="/register">
-          Register
-        </NavLink>
-      </Fragment>
+      <NavLink className="nav-item nav-link" to="/login">
+        Login
+      </NavLink>
     );
 
     return (

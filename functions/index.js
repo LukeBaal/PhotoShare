@@ -1,15 +1,19 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const vision = require('@google-cloud/vision');
+const algoliasearch = require('algoliasearch');
+const sgMail = require('@sendgrid/mail');
+
 admin.initializeApp();
 const db = admin.firestore();
-const vision = require('@google-cloud/vision');
 const visionClient = new vision.ImageAnnotatorClient();
 const env = functions.config();
-
-const algoliasearch = require('algoliasearch');
 const client = algoliasearch(env.algolia.appid, env.algolia.apikey);
 const index = client.initIndex('tags');
 
+const APP_NAME = 'Photo Share';
+
+// When Image is Stored in Database, call Google Vision API and add image labels to database entry
 exports.getImageLabels = functions.firestore
   .document('photos/{document}')
   .onCreate((snap, context) => {
@@ -42,6 +46,7 @@ exports.getImageLabels = functions.firestore
       .catch(err => console.log(err));
   });
 
+// When photo database entry is updated (ie. photo is now labeled), add it to the Algolia search index.
 exports.addToIndex = functions.firestore
   .document('photos/{document}')
   .onUpdate((change, context) => {
@@ -61,6 +66,7 @@ exports.addToIndex = functions.firestore
     });
   });
 
+// When photo database entry is deleted, remove it from Algolia search index
 exports.unindexPhoto = functions.firestore
   .document('photos/{document}')
   .onDelete((snap, context) => {
@@ -69,3 +75,24 @@ exports.unindexPhoto = functions.firestore
     // Delete an ID from the index
     return index.deleteObject(objectId);
   });
+
+// When user signs in for the first time, send a welcome email
+exports.sendWelcomeEmail = functions.auth.user().onCreate(user => {
+  const { email, displayName } = user;
+
+  sgMail.setApiKey(env.send_grid.api_key);
+  const msg = {
+    to: email,
+    from: 'lukeisaacb@gmail.com',
+    subject: `Welcome to ${APP_NAME}`,
+    text: `Hello ${displayName || ''},
+Welcome to ${APP_NAME}. Begin sharing and browsing photos today!
+
+Sincerely,
+Photo Share`
+  };
+  return sgMail
+    .send(msg)
+    .then(() => console.log(`Email sent to ${msg.to}`))
+    .catch(err => console.log(err));
+});
