@@ -12,7 +12,7 @@ import Landing from './components/Landing';
 import AddImage from './components/AddImage';
 
 class App extends Component<any, any> {
-  async componentWillMount() {
+  async componentDidMount() {
     await auth.onAuthStateChanged(
       async user => await store.dispatch(getUser(user))
     );

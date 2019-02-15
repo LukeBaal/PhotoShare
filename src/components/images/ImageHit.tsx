@@ -1,5 +1,6 @@
 import React from 'react';
 import { Label } from '../Photo';
+import LazyLoad from 'react-lazy-load';
 
 interface PhotoHit {
   objectID: string;
@@ -15,13 +16,22 @@ function ImageHit({ hit }: { hit: PhotoHit }) {
   return (
     <div className="row no-gutters">
       <div className="col-xl-4">
-        <img
-          src={publicUrl}
-          className="img-fluid img-thumbnail"
+        {/* <img
+          data-src={publicUrl}
+          className="img-fluid img-thumbnail lazy"
           data-toggle="modal"
           data-target={`#modal${objectID}`}
           style={{ cursor: 'zoom-in' }}
-        />
+        /> */}
+        {/* <LazyLoadImage effect="blur" src={publicUrl} className="img-fluid" /> */}
+        <LazyLoad offsetVertical={300} debounce={false}>
+          <img
+            src={publicUrl}
+            data-toggle="modal"
+            data-target={`#modal${objectID}`}
+            style={{ cursor: 'zoom-in' }}
+          />
+        </LazyLoad>
       </div>
       <div className="col-xl-8">
         <div className="card-body">
@@ -78,6 +88,9 @@ function ImageHit({ hit }: { hit: PhotoHit }) {
             </div>
             <div className="modal-body">
               <img src={publicUrl} className="img-fluid" />
+              {/* <LazyLoad onContentVisible={() => console.log('loaded')}>
+                <img src={publicUrl} />
+              </LazyLoad> */}
             </div>
           </div>
         </div>
